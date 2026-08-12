@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CampusMart</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>CampusMart</h1><nav><a href="#products">Products</a><a href="#auth">Login/Register</a><a href="#cart">Cart</a><button id="logout">Logout</button></nav></header>
+<main>
+<section id="auth" class="card">
+<h2>Login / Register</h2>
+<div class="grid">
+<form id="register"><h3>Register</h3><input id="rname" placeholder="Name" required><input id="remail" type="email" placeholder="Email" required><input id="rpass" type="password" placeholder="Password" required><select id="rrole"><option value="buyer">Buyer</option><option value="seller">Seller</option></select><button>Register</button></form>
+<form id="login"><h3>Login</h3><input id="lemail" type="email" placeholder="Email" required><input id="lpass" type="password" placeholder="Password" required><button>Login</button></form>
+</div><p id="user"></p>
+</section>
+<section id="seller" class="card hidden"><h2>Seller: Add Product</h2><form id="productForm" class="grid"><input id="pname" placeholder="Product name" required><input id="pprice" type="number" step="0.01" placeholder="Price" required><input id="pstock" type="number" placeholder="Stock" required><input id="pcat" placeholder="Category"><input id="pdesc" placeholder="Description"><input id="pimg" placeholder="Image URL"><button>Add Product</button></form></section>
+<section id="products" class="card"><h2>Products</h2><div class="toolbar"><input id="search" placeholder="Search"><input id="category" placeholder="Category"><button onclick="loadProducts()">Search</button></div><div id="productList" class="products"></div></section>
+<section id="cart" class="card"><h2>Your Cart</h2><div id="cartList"></div><button id="checkout">Place Order / Mock Payment</button><p id="orderMsg"></p></section>
+</main><script src="app.js"></script>
+</body></html>
