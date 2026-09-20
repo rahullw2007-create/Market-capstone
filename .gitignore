@@ -1,0 +1,23 @@
+target/
+*.war
+*.ear
+*.jar
+*.class
+
+# IDE files
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# H2 Database files
+*.db
+*.db.mv.db
+*.db.trace.db
+zenithbazaar_db*
+
+# Logs
+logs/
+*.log

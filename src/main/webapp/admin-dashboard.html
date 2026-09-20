@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Dashboard - Rahul Mart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-header {
+            background: linear-gradient(135deg, #0f172a, #334155);
+            color: #fff;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 2rem;
+        }
+
+        .tab-bar {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.25rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                Rahul<span class="logo-badge" style="background: var(--dark-surface);">ADMIN</span>
+            </a>
+            <ul class="nav-links" id="navbar-links"></ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="admin-header">
+            <h2>System Administration Dashboard</h2>
+            <p style="opacity: 0.9;">Manage global users, product listings, vendor relationships, and system-wide order fulfillment.</p>
+        </div>
+
+        <div class="tab-bar">
+            <button class="tab-btn active" onclick="switchTab('users')">Users Management</button>
+            <button class="tab-btn" onclick="switchTab('products')">Products Management</button>
+            <button class="tab-btn" onclick="switchTab('orders')">Orders Management</button>
+        </div>
+
+        <!-- Users Tab -->
+        <div id="tab-users" class="tab-content">
+            <h3 style="margin-bottom: 1rem;">Registered System Users</h3>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-users-body">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Products Tab -->
+        <div id="tab-products" class="tab-content" style="display: none;">
+            <h3 style="margin-bottom: 1rem;">Global Product Catalog</h3>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product Name</th>
+                            <th>Vendor</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-products-body">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Orders Tab -->
+        <div id="tab-orders" class="tab-content" style="display: none;">
+            <h3 style="margin-bottom: 1rem;">System Purchases & Fulfillment</h3>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Order Number</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Total Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-orders-body">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Detail Modal -->
+    <div id="order-detail-modal" class="chat-modal" style="position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.6); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center;">
+        <div style="background: #fff; width: 750px; max-width: 90%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg);">
+            <div class="chat-header" style="background: var(--dark);">
+                <span>Detailed Order Breakdown</span>
+                <button onclick="closeAdminModal()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1.2rem;">✕</button>
+            </div>
+            <div id="order-detail-content" style="padding: 1.5rem; max-height: 80vh; overflow-y: auto;">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Rahul Mart Multi-Vendor Marketplace</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Portal - Rahul Mart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .vendor-header {
+            background: linear-gradient(135deg, #1e1b4b, #4338ca);
+            color: #fff;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                Rahul<span class="logo-badge">VENDOR</span>
+            </a>
+            <ul class="nav-links" id="navbar-links"></ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="vendor-header">
+            <div>
+                <h2>Vendor Product & Sales Portal</h2>
+                <p style="opacity: 0.9;">Manage product catalog, stock inventory, and fulfill incoming orders.</p>
+            </div>
+            <button onclick="openProductModal()" class="btn btn-primary" style="background: #fff; color: var(--primary);">+ Add New Product</button>
+        </div>
+
+        <div style="margin-bottom: 2.5rem;">
+            <h3 style="margin-bottom: 1rem;">My Inventory & Products</h3>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vendor-products-body">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <h3 style="margin-bottom: 1rem;">Incoming Orders Containing My Products</h3>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Order Number</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>My Vendor Items Purchased</th>
+                            <th>Order Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vendor-orders-body">
+                        <!-- Dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Add/Edit Modal -->
+    <div id="product-modal" class="chat-modal" style="position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.6); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center;">
+        <div style="background: #fff; width: 500px; max-width: 90%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg);">
+            <div class="chat-header" style="background: var(--primary);">
+                <span id="modal-title">Add New Product</span>
+                <button onclick="closeProductModal()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1.2rem;">✕</button>
+            </div>
+            <form id="product-form" onsubmit="handleProductSubmit(event)" style="padding: 1.5rem;">
+                <input type="hidden" id="productId">
+                <div class="form-group">
+                    <label for="name">Product Name</label>
+                    <input type="text" id="name" class="form-control" required placeholder="e.g. Ergonomic Gaming Mouse">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" id="category" class="form-control" required placeholder="Electronics, Fashion, etc.">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label for="price">Price ($)</label>
+                        <input type="number" step="0.01" min="0" id="price" class="form-control" required placeholder="49.99">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Stock Quantity</label>
+                        <input type="number" min="0" id="quantity" class="form-control" required placeholder="50">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Image URL</label>
+                    <input type="url" id="imageUrl" class="form-control" placeholder="https://images.unsplash.com/...">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" class="form-control" rows="3" placeholder="Detailed product specifications..."></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button type="button" onclick="closeProductModal()" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Rahul Mart Multi-Vendor Marketplace</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/vendor.js"></script>
+</body>
+</html>
